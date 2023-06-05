@@ -4,24 +4,33 @@ const Menu = () => {
   const [mode, setMode] = useState(false);
   const [search, setSearch] = useState("");
   const handleMode = () => {
-    setMode(!mode)
-  }
+    setMode(!mode);
+  };
   const handleSearch = (e) => {
-    setSearch(e.target.value)
-    console.log(search)
-  }
+    setSearch(e.target.value);
+    console.log(search);
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
   return (
-    <div className="d-flex justify-content-between bg-light">
+    <div
+      className={
+        mode
+          ? "bg-dark d-flex justify-content-between text-white"
+          : "bg-light d-flex justify-content-between bg-light"
+      }
+    >
       <div className="d-flex">
         <h4 className="p-2 flex-grow-1 bd-highlight">Text Utility</h4>
         <div className="p-2 flex-grow-1 bd-highlight">Home</div>
         <div className="p-2 flex-grow-1 bd-highlight">About Us</div>
-        <div className="p-2 flex-grow-1 bd-highlight">
+        <div
+          className="p-2 flex-grow-1 bd-highlight"
+          aria-labelledby="dropdownMenuButton"
+        >
           Dropdown
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuItem">
             Future Action
           </div>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -32,17 +41,14 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <form 
-      className="d-flex gap-3 align-items-center"
-      onSubmit={handleSubmit}
-      >
+      <form className="d-flex gap-3 align-items-center" onSubmit={handleSubmit}>
         <div>
-          <input 
-          type="text" 
-          className="form-control" 
-          placeholder="search"
-          value={search}
-          onChange={handleSearch}
+          <input
+            type="text"
+            className="form-control"
+            placeholder="search"
+            value={search}
+            onChange={handleSearch}
           />
         </div>
         <div>
@@ -59,7 +65,7 @@ const Menu = () => {
           onClick={handleMode}
         />
         <label className="form-check-label">
-          Enable {mode? "Light" : "Dark"} Mode
+          Enable {mode ? "Light" : "Dark"} Mode
         </label>
       </div>
     </div>
